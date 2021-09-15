@@ -8,6 +8,11 @@ namespace Domain
     public class Ticket
     {
         /// <summary>
+        /// Идентификатор
+        /// </summary>
+        public Guid Id {  get; set; }
+
+        /// <summary>
         /// Пункт отправления
         /// </summary>
         public string From { get; set; }
