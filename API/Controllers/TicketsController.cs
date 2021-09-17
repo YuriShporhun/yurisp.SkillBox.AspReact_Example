@@ -1,34 +1,37 @@
-﻿using Domain;
-using Microsoft.AspNetCore.Http;
+﻿using Application;
+using Application.Tickets;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Persistence;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TicketsController : ControllerBase
+    public class TicketsController : BaseApiController
     {
-        private readonly DataContext _context;
-        public TicketsController(DataContext context)
-        {
-            _context = context;
-        }
-
         [HttpGet]
         public async Task<ActionResult<List<Ticket>>> GetTickets()
         {
-            return await _context.Tickets.ToListAsync();
+            return await Mediator.Send(new TicketsList.Query());
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Ticket>> GetTicket(Guid id)
         {
-            return await _context.Tickets.FindAsync(id);
+            return await Mediator.Send(new TicketDetails.Query { Id = id});
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateTicket(Ticket newTicket)
+        {
+            return Ok(await Mediator.Send(new Create.Command { Ticket = newTicket}));
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditTicket(Guid id, Ticket ticket)
+        {
+            return Ok(await Mediator.Send(new EditTicket.Command { Ticket = ticket }));
         }
 
     }
