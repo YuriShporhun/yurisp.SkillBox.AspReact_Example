@@ -16,7 +16,7 @@ namespace API.Controllers
             return await Mediator.Send(new TicketsList.Query());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
         public async Task<ActionResult<Ticket>> GetTicket(Guid id)
         {
             return await Mediator.Send(new TicketDetails.Query { Id = id});
@@ -28,9 +28,10 @@ namespace API.Controllers
             return Ok(await Mediator.Send(new Create.Command { Ticket = newTicket}));
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id:guid}")]
         public async Task<IActionResult> EditTicket(Guid id, Ticket ticket)
         {
+            ticket.Id = id;
             return Ok(await Mediator.Send(new EditTicket.Command { Ticket = ticket }));
         }
 

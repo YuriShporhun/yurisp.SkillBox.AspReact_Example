@@ -16,8 +16,8 @@ namespace Application
 
         public class Handler : IRequestHandler<Command>
         {
-            readonly DataContext _context;
-            IMapper _mapper;
+            private readonly DataContext _context;
+            private readonly IMapper _mapper;
 
             public Handler(DataContext context, IMapper mapper)
             {
@@ -31,7 +31,7 @@ namespace Application
 
                 _mapper.Map(request.Ticket, ticket);
 
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(cancellationToken);
 
                 return Unit.Value;
             }
