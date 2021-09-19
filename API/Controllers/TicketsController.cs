@@ -13,13 +13,13 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Ticket>>> GetTickets()
         {
-            return await Mediator.Send(new TicketsList.Query());
+            return await Mediator.Send(new GetAll.Query());
         }
 
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<Ticket>> GetTicket(Guid id)
         {
-            return await Mediator.Send(new TicketDetails.Query { Id = id});
+            return await Mediator.Send(new GetDetails.Query { Id = id});
         }
 
         [HttpPost]
@@ -32,7 +32,7 @@ namespace API.Controllers
         public async Task<IActionResult> EditTicket(Guid id, Ticket ticket)
         {
             ticket.Id = id;
-            return Ok(await Mediator.Send(new EditTicket.Command { Ticket = ticket }));
+            return Ok(await Mediator.Send(new Edit.Command { Ticket = ticket }));
         }
 
     }

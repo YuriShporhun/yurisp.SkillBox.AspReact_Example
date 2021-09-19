@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Tickets;
 
 namespace API
 {
@@ -48,7 +49,7 @@ namespace API
                 });
             });
 
-            services.AddMediatR(typeof(TicketsList.Handler).Assembly);
+            services.AddMediatR(typeof(GetAll.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
         }
 
@@ -56,7 +57,7 @@ namespace API
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                _ = app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
             }

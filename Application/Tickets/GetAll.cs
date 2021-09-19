@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Application
+namespace Application.Tickets
 {
-    public class TicketsList
+    public class GetAll
     {
         public class Query : IRequest<List<Ticket>> { }
         public class Handler : IRequestHandler<Query, List<Ticket>>

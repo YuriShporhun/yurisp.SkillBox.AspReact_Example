@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Tickets
 {
-    public  class Create
+    public class Create
     {
         public class Command : IRequest
         {

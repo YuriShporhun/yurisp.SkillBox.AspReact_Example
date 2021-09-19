@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    public class TicketDetails
+    public class GetDetails
     {
         public class Query : IRequest<Ticket>
         {
