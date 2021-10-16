@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31717.71
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{59455ADE-E0A7-4C35-862C-4D63EA890641}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinClient", "WinClient\WinClient.csproj", "{C51DCAE8-0CE8-4287-A027-129A101769DD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{0F03929E-E2E5-4752-AF45-2189DFEAB8A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{9948B52C-E98A-4A59-8B77-AC3E3069868F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{C51DCAE8-0CE8-4287-A027-129A101769DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C51DCAE8-0CE8-4287-A027-129A101769DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C51DCAE8-0CE8-4287-A027-129A101769DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9948B52C-E98A-4A59-8B77-AC3E3069868F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9948B52C-E98A-4A59-8B77-AC3E3069868F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9948B52C-E98A-4A59-8B77-AC3E3069868F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9948B52C-E98A-4A59-8B77-AC3E3069868F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

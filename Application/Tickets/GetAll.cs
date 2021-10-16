@@ -13,7 +13,7 @@ namespace Application.Tickets
         public class Query : IRequest<List<Ticket>> { }
         public class Handler : IRequestHandler<Query, List<Ticket>>
         {
-            readonly DataContext _context;
+            private readonly DataContext _context;
 
             public Handler(DataContext context)
             {

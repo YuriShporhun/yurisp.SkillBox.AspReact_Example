@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Tickets;
+using Infrastructure.Images;
 
 namespace API
 {
@@ -51,6 +52,7 @@ namespace API
 
             services.AddMediatR(typeof(GetAll.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+            services.Configure<CloudinaryApiSettings>(Configuration.GetSection("Cloudinary"));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

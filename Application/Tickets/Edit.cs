@@ -30,7 +30,7 @@ namespace Application.Tickets
                 var ticket = await _context.Tickets.FindAsync(request.Ticket.Id, cancellationToken);
 
                 _mapper.Map(request.Ticket, ticket);
-
+ 
                 await _context.SaveChangesAsync(cancellationToken);
 
                 return Unit.Value;
