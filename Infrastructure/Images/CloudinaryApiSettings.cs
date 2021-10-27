@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Images
 {
+    /// <summary>
+    /// Настроки для облачного сервиса Cloudinary
+    /// </summary>
     public class CloudinaryApiSettings
     {
         public string CloudName { get; set; }

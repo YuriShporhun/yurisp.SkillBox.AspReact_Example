@@ -1,27 +1,28 @@
-﻿using Domain;
+﻿using Application.Interfaces;
+using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Persistence;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.Tickets
 {
-    public class GetAll
+    public class GetAllTickets
     {
         public class Query : IRequest<List<Ticket>> { }
         public class Handler : IRequestHandler<Query, List<Ticket>>
         {
-            private readonly DataContext _context;
+            private readonly IDataAccess _dataAccess;
 
-            public Handler(DataContext context)
+            public Handler(IDataAccess context)
             {
-                _context = context;
+                _dataAccess = context;
             }
+
             public async Task<List<Ticket>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Tickets.ToListAsync(cancellationToken: cancellationToken);
+                return await _dataAccess.Tickets.ToListAsync(cancellationToken: cancellationToken);
             }
         }
     }

@@ -1,6 +1,6 @@
-﻿using Domain;
+﻿using Application.Interfaces;
+using Domain;
 using MediatR;
-using Persistence;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,9 +15,9 @@ namespace Application.Tickets
 
         public class Handler : IRequestHandler<Command>
         {
-            private readonly DataContext _context;
+            private readonly IDataAccess _context;
 
-            public Handler(DataContext context)
+            public Handler(IDataAccess context)
             {
                 _context = context;
             }
@@ -25,7 +25,7 @@ namespace Application.Tickets
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
                 _context.Tickets.Add(request.Ticket);
-                _ = await _context.SaveChangesAsync(cancellationToken);
+                _ = await _context.SaveAsync(cancellationToken);
                 return Unit.Value;
             }
         }

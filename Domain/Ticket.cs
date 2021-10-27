@@ -1,17 +1,13 @@
-﻿using System;
+﻿using Domain.Common;
+using System;
 
 namespace Domain
 {
     /// <summary>
     /// Информация о билете на самолет
     /// </summary>
-    public class Ticket
-    {
-        /// <summary>
-        /// Идентификатор
-        /// </summary>
-        public Guid Id {  get; set; }
-
+    public class Ticket: Entity
+    { 
         /// <summary>
         /// Пункт отправления
         /// </summary>

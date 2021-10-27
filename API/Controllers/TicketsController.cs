@@ -13,13 +13,13 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Ticket>>> GetTickets()
         {
-            return await Mediator.Send(new GetAll.Query());
+            return await Mediator.Send(new GetAllTickets.Query());
         }
 
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<Ticket>> GetTicket(Guid id)
         {
-            return await Mediator.Send(new GetDetails.Query { Id = id});
+            return await Mediator.Send(new GetTicketById.Query { Id = id});
         }
 
         [HttpPost]

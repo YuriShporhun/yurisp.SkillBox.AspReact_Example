@@ -50,7 +50,7 @@ namespace API
                 });
             });
 
-            services.AddMediatR(typeof(GetAll.Handler).Assembly);
+            services.AddMediatR(typeof(GetAllTickets.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.Configure<CloudinaryApiSettings>(Configuration.GetSection("Cloudinary"));
         }
