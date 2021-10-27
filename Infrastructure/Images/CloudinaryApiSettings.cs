@@ -11,8 +11,19 @@ namespace Infrastructure.Images
     /// </summary>
     public class CloudinaryApiSettings
     {
+        /// <summary>
+        /// Имя персонального облака
+        /// </summary>
         public string CloudName { get; set; }
+
+        /// <summary>
+        /// Ключ для API
+        /// </summary>
         public string ApiKey { get; set; }
+
+        /// <summary>
+        /// Секретный ключ для API
+        /// </summary>
         public string ApiSecret { get; set; }
     }
 }

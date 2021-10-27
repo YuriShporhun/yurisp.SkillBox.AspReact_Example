@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Images
+namespace Application.Images.Infrastructure
 {
-    public class CloudinaryApiResult
+    public class ImageApiResult
     {
         public string Url { get; set; }
         public string Id {  get; set; }

@@ -1,16 +1,15 @@
-﻿using CloudinaryDotNet;
+﻿using Application.Images.Exceptions;
+using Application.Images.Infrastructure;
+using Application.Images.Interfaces;
+using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Images
 {
-    public class ImageService
+    public class ImageService: IImageService
     {
         private readonly Cloudinary _cloudinary;
         public ImageService(IOptions<CloudinaryApiSettings> configuration)
@@ -19,7 +18,7 @@ namespace Infrastructure.Images
             _cloudinary = new Cloudinary(cloudinaryAccount);
         }
 
-        public async Task<CloudinaryApiResult> AddImage(IFormFile file)
+        public async Task<ImageApiResult> AddImage(IFormFile file)
         {
             if(file.Length > 0)
             {
@@ -33,7 +32,12 @@ namespace Infrastructure.Images
 
                 var result = await _cloudinary.UploadAsync(parameters);
 
-                return new CloudinaryApiResult
+                if(result.Error != null)
+                {
+                    throw new ImageUploadException(result.Error.Message);
+                }
+
+                return new ImageApiResult
                 {
                     Id = result.PublicId,
                     Url = result.SecureUrl.ToString()
@@ -43,9 +47,11 @@ namespace Infrastructure.Images
             return null;
         }
 
-        public async Task<CloudinaryApiResult> RemoveImage(string id)
+        public async Task<string> RemoveImage(string publicId)
         {
-
+            var parameters = new DeletionParams(publicId);
+            var result = await _cloudinary.DestroyAsync(parameters);
+            return result.Result;
         }
     }
 }

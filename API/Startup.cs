@@ -1,23 +1,16 @@
-using Application;
 using Application.Core;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Application.Tickets;
 using Infrastructure.Images;
+using Application.Images.Interfaces;
 
 namespace API
 {
@@ -52,6 +45,7 @@ namespace API
 
             services.AddMediatR(typeof(GetAllTickets.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+            services.AddScoped<IImageService, ImageService>();
             services.Configure<CloudinaryApiSettings>(Configuration.GetSection("Cloudinary"));
         }
 

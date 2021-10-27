@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Images
 {
-    internal class Add
+    internal class AddImage
     {
         public class Command: IRequest<Result<Image>>
     }
