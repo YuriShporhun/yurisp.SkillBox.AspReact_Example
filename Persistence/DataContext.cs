@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+﻿using Application.Persistence.Interfaces;
 using Domain;
 using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -10,12 +10,7 @@ namespace Persistence
 {
     public class DataContext : IdentityDbContext<ApplicationUser>, IDataAccess
     {
-        public DataContext()
-        {
-
-        }
-
-        public DataContext(DbContextOptions options) : base(options)
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
 
         }
@@ -31,5 +26,6 @@ namespace Persistence
         }
 
         public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<DestinationImage> DestinationImages { get; set; }
     }
 }

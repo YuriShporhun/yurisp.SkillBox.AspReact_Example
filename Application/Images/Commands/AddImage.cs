@@ -9,6 +9,6 @@ namespace Application.Images
 {
     internal class AddImage
     {
-        public class Command: IRequest<Result<Image>>
+        //public class Command: IRequest<Result<Image>>
     }
 }

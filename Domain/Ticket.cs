@@ -1,5 +1,6 @@
 ﻿using Domain.Common;
 using System;
+using System.Collections.Generic;
 
 namespace Domain
 {
@@ -28,5 +29,6 @@ namespace Domain
         /// </summary>
         public DateTime Returning { get; set; }
 
+        public ICollection<DestinationImage> Images { get; set; }
     }
 }

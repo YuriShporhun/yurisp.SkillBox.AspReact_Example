@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+﻿using Application.Persistence.Interfaces;
 using AutoMapper;
 using Domain;
 using MediatR;
@@ -11,7 +11,7 @@ namespace Application.Tickets
     {
         public class Command : IRequest
         {
-            public Domain.Ticket Ticket {  get; set; }
+            public Domain.Ticket Ticket { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>

@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+﻿using Application.Persistence.Interfaces;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

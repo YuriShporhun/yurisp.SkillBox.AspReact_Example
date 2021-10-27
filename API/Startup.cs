@@ -11,6 +11,7 @@ using Persistence;
 using Application.Tickets;
 using Infrastructure.Images;
 using Application.Images.Interfaces;
+using Application.Persistence.Interfaces;
 
 namespace API
 {
@@ -26,10 +27,12 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
+
             services.AddDbContext<DataContext>(o =>
             {
                 o.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
@@ -46,6 +49,8 @@ namespace API
             services.AddMediatR(typeof(GetAllTickets.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.AddScoped<IImageService, ImageService>();
+            services.AddScoped<IDataAccess, DataContext>();
+
             services.Configure<CloudinaryApiSettings>(Configuration.GetSection("Cloudinary"));
         }
 
