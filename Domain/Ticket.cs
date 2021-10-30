@@ -7,8 +7,10 @@ namespace Domain
     /// <summary>
     /// Информация о билете на самолет
     /// </summary>
-    public class Ticket: Entity
-    { 
+    public class Ticket: IEntity
+    {
+        public Guid Id { get; set; }
+
         /// <summary>
         /// Пункт отправления
         /// </summary>
@@ -29,6 +31,9 @@ namespace Domain
         /// </summary>
         public DateTime Returning { get; set; }
 
+        /// <summary>
+        /// Изображения 
+        /// </summary>
         public ICollection<DestinationImage> Images { get; set; }
     }
 }

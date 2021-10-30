@@ -44,14 +44,14 @@ namespace Infrastructure.Images
                 };
             }
 
-            return null;
+            throw new ImageUploadException("Image file is empty");
         }
 
         public async Task<string> RemoveImage(string publicId)
         {
             var parameters = new DeletionParams(publicId);
             var result = await _cloudinary.DestroyAsync(parameters);
-            return result.Result;
+            return result.Result == "ok" ? result.Result : throw new ImageUploadException("Image removal error");
         }
     }
 }

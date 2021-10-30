@@ -25,14 +25,14 @@ namespace API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateTicket(Ticket newTicket)
         {
-            return Ok(await Mediator.Send(new Create.Command { Ticket = newTicket}));
+            return Ok(await Mediator.Send(new CreateTicket.Command { Ticket = newTicket}));
         }
 
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> EditTicket(Guid id, Ticket ticket)
         {
             ticket.Id = id;
-            return Ok(await Mediator.Send(new Edit.Command { Ticket = ticket }));
+            return Ok(await Mediator.Send(new EditTicketById.Command { Ticket = ticket }));
         }
 
     }

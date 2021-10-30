@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.Tickets
 {
-    public class Edit
+    public class EditTicketById
     {
         public class Command : IRequest
         {
