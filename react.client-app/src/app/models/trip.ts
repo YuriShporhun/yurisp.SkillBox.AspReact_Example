@@ -1,4 +1,4 @@
-export default interface Ticket {
+export default interface Trip {
     id: string;
     from: string;
     to: string;

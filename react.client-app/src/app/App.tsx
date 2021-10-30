@@ -1,16 +1,16 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Container, Header, Grid } from 'semantic-ui-react';
 import axios from 'axios';
-import Ticket from './models/ticket';
+import Ticket from './models/trip';
 import NavBar from './layout/NavBar';
-import TicketDashboard from '../features/tickets/dashboard/TicketDashboard'
+import TicketDashboard from '../features/trips/dashboard/TripDashboard'
 
 function App() {
-  const [tickets, setTickets] = useState<Ticket[]>([])
+  const [trips, setTrips] = useState<Ticket[]>([])
 
   useEffect(() => {
     axios.get<Ticket[]>('https://localhost:44373/api/tickets').then(response => {
-      setTickets(response.data);
+      setTrips(response.data);
     });
   }, []);
 
@@ -20,8 +20,11 @@ function App() {
         <NavBar />
       </header>
       <main>
-        <TicketDashboard tickets={tickets} />
+        <TicketDashboard trips={trips} />
       </main>
+      <footer>
+
+      </footer>
     </Fragment>
   );
 }
