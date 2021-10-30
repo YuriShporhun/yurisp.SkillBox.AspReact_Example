@@ -1,16 +1,26 @@
 ﻿using Application.Persistence.Interfaces;
+using Application.Trips.Validators;
 using Domain;
+using FluentValidation;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.Tickets
 {
-    public class CreateTicket
+    public class CreateTrip
     {
         public class Command : IRequest
         {
-            public Ticket Ticket { get; set; }
+            public Trip Trip { get; set; }
+        }
+
+        public class CommandValidator : AbstractValidator<Command>
+        {
+            public CommandValidator()
+            {
+                RuleFor(x => x.Trip).SetValidator(new CreateTripValidator());
+            }
         }
 
         public class Handler : IRequestHandler<Command>
@@ -24,7 +34,7 @@ namespace Application.Tickets
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                _context.Tickets.Add(request.Ticket);
+                _context.Tickets.Add(request.Trip);
                 _ = await _context.SaveAsync(cancellationToken);
                 return Unit.Value;
             }

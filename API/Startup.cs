@@ -12,6 +12,7 @@ using Application.Tickets;
 using Infrastructure.Images;
 using Application.Images.Interfaces;
 using Application.Persistence.Interfaces;
+using FluentValidation.AspNetCore;
 
 namespace API
 {
@@ -26,7 +27,10 @@ namespace API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddFluentValidation(config =>
+            {
+                config.RegisterValidatorsFromAssemblyContaining<CreateTrip>();
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -46,7 +50,7 @@ namespace API
                 });
             });
 
-            services.AddMediatR(typeof(GetAllTickets.Handler).Assembly);
+            services.AddMediatR(typeof(GetAllTrips.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.AddScoped<IImageService, ImageService>();
             services.AddScoped<IDataAccess, DataContext>();

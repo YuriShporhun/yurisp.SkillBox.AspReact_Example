@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.Tickets.DTO
 {
-    public class TicketDto
+    public class TripDto
     {
 
     }

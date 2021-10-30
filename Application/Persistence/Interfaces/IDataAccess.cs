@@ -7,7 +7,7 @@ namespace Application.Persistence.Interfaces
 {
     public interface IDataAccess
     {
-        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Trip> Tickets { get; set; }
 
         Task<int> SaveAsync(CancellationToken cancellationToken);
     }

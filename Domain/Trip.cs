@@ -7,7 +7,7 @@ namespace Domain
     /// <summary>
     /// Информация о билете на самолет
     /// </summary>
-    public class Ticket: IEntity
+    public class Trip: IEntity
     {
         public Guid Id { get; set; }
 

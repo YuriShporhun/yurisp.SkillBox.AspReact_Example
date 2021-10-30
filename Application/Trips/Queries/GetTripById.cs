@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    public class GetTicketById
+    public class GetTripById
     {
-        public class Query : IRequest<Ticket>
+        public class Query : IRequest<Trip>
         {
             public Guid Id {  get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, Ticket>
+        public class Handler : IRequestHandler<Query, Trip>
         {
             private readonly IDataAccess _dataAccess;
             public Handler(IDataAccess context)
             {
                 _dataAccess = context;
             }
-            public async Task<Ticket> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Trip> Handle(Query request, CancellationToken cancellationToken)
             {
                 return await _dataAccess.Tickets.FindAsync(request.Id, cancellationToken);
             }

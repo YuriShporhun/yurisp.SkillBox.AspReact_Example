@@ -8,31 +8,31 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
-    public class TicketsController : BaseApiController
+    public class TripsController : BaseApiController
     {
         [HttpGet]
-        public async Task<ActionResult<List<Ticket>>> GetTickets()
+        public async Task<ActionResult<List<Trip>>> GetTickets()
         {
-            return await Mediator.Send(new GetAllTickets.Query());
+            return await Mediator.Send(new GetAllTrips.Query());
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<Ticket>> GetTicket(Guid id)
+        public async Task<ActionResult<Trip>> GetTicket(Guid id)
         {
-            return await Mediator.Send(new GetTicketById.Query { Id = id});
+            return await Mediator.Send(new GetTripById.Query { Id = id});
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTicket(Ticket newTicket)
+        public async Task<IActionResult> CreateTicket(Trip newTicket)
         {
-            return Ok(await Mediator.Send(new CreateTicket.Command { Ticket = newTicket}));
+            return Ok(await Mediator.Send(new CreateTrip.Command { Trip = newTicket}));
         }
 
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> EditTicket(Guid id, Ticket ticket)
+        public async Task<IActionResult> EditTicket(Guid id, Trip ticket)
         {
             ticket.Id = id;
-            return Ok(await Mediator.Send(new EditTicketById.Command { Ticket = ticket }));
+            return Ok(await Mediator.Send(new EditTicketTrip.Command { Ticket = ticket }));
         }
 
     }

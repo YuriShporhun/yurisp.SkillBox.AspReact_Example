@@ -25,7 +25,7 @@ namespace Persistence
             return await SaveChangesAsync(cancellationToken);
         }
 
-        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Trip> Tickets { get; set; }
         public DbSet<DestinationImage> DestinationImages { get; set; }
     }
 }

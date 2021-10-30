@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Application.Tickets
 {
-    public class EditTicketById
+    public class EditTicketTrip
     {
         public class Command : IRequest
         {
-            public Domain.Ticket Ticket { get; set; }
+            public Domain.Trip Ticket { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>

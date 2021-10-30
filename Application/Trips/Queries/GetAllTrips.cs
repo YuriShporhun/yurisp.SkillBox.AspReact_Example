@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Application.Tickets
 {
-    public class GetAllTickets
+    public class GetAllTrips
     {
-        public class Query : IRequest<List<Ticket>> { }
-        public class Handler : IRequestHandler<Query, List<Ticket>>
+        public class Query : IRequest<List<Trip>> { }
+        public class Handler : IRequestHandler<Query, List<Trip>>
         {
             private readonly IDataAccess _dataAccess;
 
@@ -20,7 +20,7 @@ namespace Application.Tickets
                 _dataAccess = context;
             }
 
-            public async Task<List<Ticket>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<List<Trip>> Handle(Query request, CancellationToken cancellationToken)
             {
                 return await _dataAccess.Tickets.ToListAsync(cancellationToken: cancellationToken);
             }
