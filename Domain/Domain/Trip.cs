@@ -1,4 +1,5 @@
 ﻿using Domain.Common;
+using Entities.Domain;
 using System;
 using System.Collections.Generic;
 
@@ -14,7 +15,7 @@ namespace Domain
         /// <summary>
         /// Пункт отправления
         /// </summary>
-        public string LeavingFrom { get; set; }
+        public Destination LeavingFrom { get; set; }
 
         /// <summary>
         /// Пункт назначения
@@ -35,5 +36,7 @@ namespace Domain
         /// Изображения 
         /// </summary>
         public ICollection<DestinationImage> Images { get; set; }
+
+        public Currency Price { get; set; }
     }
 }
