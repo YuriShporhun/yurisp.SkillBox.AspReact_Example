@@ -1,4 +1,5 @@
-﻿using Application.User.Dto;
+﻿using Application.Jwt.Interfaces;
+using Application.User.Dto;
 using Application.User.Exceptions;
 using AutoMapper;
 using FluentValidation;
@@ -36,12 +37,15 @@ namespace Application.User
             private readonly UserManager<ApplicationUser> _userManager;
             private readonly SignInManager<ApplicationUser> _signInManager;
             private readonly IMapper _mapper;
+            private readonly IJwtService _jwtService;
 
-            public Handler(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IMapper mapper)
+            public Handler(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, 
+                IMapper mapper, IJwtService jwtService)
             {
                 _userManager = userManager;
                 _signInManager = signInManager;
                 _mapper = mapper;
+                _jwtService = jwtService;
             }
 
             public async Task<UserDto> Handle(Query request, CancellationToken cancellationToken)
@@ -56,6 +60,7 @@ namespace Application.User
                 var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
                 var userDto = _mapper.Map<UserDto>(user);
+                userDto.Token = _jwtService.Create(user);
 
                 if(result.Succeeded)
                 {
