@@ -14,22 +14,22 @@ namespace Domain
         /// <summary>
         /// Пункт отправления
         /// </summary>
-        public string From { get; set; }
+        public string LeavingFrom { get; set; }
 
         /// <summary>
         /// Пункт назначения
         /// </summary>
-        public string To { get; set; }
+        public string GoingTo { get; set; }
 
         /// <summary>
         /// Дата вылета
         /// </summary>
-        public DateTime Departing { get;set;  }
+        public DateTime DepartingDate { get;set;  }
 
         /// <summary>
         /// Дата возврата
         /// </summary>
-        public DateTime Returning { get; set; }
+        public DateTime ReturningDate { get; set; }
 
         /// <summary>
         /// Изображения 

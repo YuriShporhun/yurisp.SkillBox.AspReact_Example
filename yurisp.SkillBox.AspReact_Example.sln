@@ -22,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 Domain", "0 Domain", "{66700910-7C23-4152-86BF-3264F7C559B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity", "Identity\Identity.csproj", "{33795769-B3ED-458F-A4F6-7CF61E3A712E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity", "Identity\Identity.csproj", "{33795769-B3ED-458F-A4F6-7CF61E3A712E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Infrastucture", "1 Infrastucture", "{100A1A9C-0013-4880-BCDD-97D4112A29EE}"
 EndProject
@@ -46,13 +46,14 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "react.client-app", "react.c
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "53454"
+		SlnRelativePath = "react.client-app\"
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 Application", "3 Application", "{0AAC6FAB-3B5C-4AB6-B1EB-F0F5AC425208}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 Controllers", "4 Controllers", "{DD8166B8-761E-43DF-8A63-C2B9986087F9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 UI", "5 UI", "{0584ADF7-1514-4EF8-87DC-AEB8D2771935}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 Presentation", "5 Presentation", "{0584ADF7-1514-4EF8-87DC-AEB8D2771935}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
