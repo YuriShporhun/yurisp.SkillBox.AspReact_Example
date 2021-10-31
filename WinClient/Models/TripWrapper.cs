@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace WinClient.ModelWrappers
 {
-    internal class TripWrapper
+    internal class Trip
     {
         TripDto model;
 
-        public TripWrapper(TripDto tripDto)
+        public Trip(TripDto tripDto)
         {
             model = tripDto;
         }
@@ -29,7 +29,5 @@ namespace WinClient.ModelWrappers
         }
 
         public string To { get; set; }
-
-
     }
 }
