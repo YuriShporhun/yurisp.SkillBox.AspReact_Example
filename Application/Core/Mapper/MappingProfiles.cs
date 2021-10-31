@@ -7,7 +7,7 @@ namespace Application.Core
     {
         public MappingProfiles()
         {
-            CreateMap<Domain.Trip, Domain.Trip>();
+            CreateMap<Trip, Trip>();
         }
     }
 }
