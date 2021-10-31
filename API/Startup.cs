@@ -13,6 +13,8 @@ using Infrastructure.Images;
 using Application.Images.Interfaces;
 using Application.Persistence.Interfaces;
 using FluentValidation.AspNetCore;
+using Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
 
 namespace API
 {
@@ -54,8 +56,13 @@ namespace API
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.AddScoped<IImageService, ImageService>();
             services.AddScoped<IDataAccess, DataContext>();
+            var builder = services.AddIdentityCore<ApplicationUser>();
+            var identityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
+            identityBuilder.AddEntityFrameworkStores<DataContext>();
+            identityBuilder.AddSignInManager<SignInManager<ApplicationUser>>(); 
 
             services.Configure<CloudinaryApiSettings>(Configuration.GetSection("Cloudinary"));
+            services.AddAuthentication();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -73,6 +80,7 @@ namespace API
 
             app.UseCors("CorsPolicy");
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

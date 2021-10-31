@@ -7,8 +7,8 @@ namespace Application.Trips.Validators
     {
         public CreateTripValidator()
         {
-            RuleFor(x => x.From).NotEmpty();
-            RuleFor(x => x.To).NotEmpty();
+            RuleFor(x => x.LeavingFrom).NotEmpty();
+            RuleFor(x => x.GoingTo).NotEmpty();
         }
     }
 }
