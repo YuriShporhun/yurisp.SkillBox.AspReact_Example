@@ -9,7 +9,7 @@ namespace WinClient.ModelWrappers
 {
     internal class Trip
     {
-        TripDto model;
+        private TripDto model;
 
         public Trip(TripDto tripDto)
         {
