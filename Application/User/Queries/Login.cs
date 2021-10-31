@@ -1,4 +1,6 @@
-﻿using Application.User.Exceptions;
+﻿using Application.User.Dto;
+using Application.User.Exceptions;
+using AutoMapper;
 using FluentValidation;
 using Infrastructure.Identity;
 using MediatR;
@@ -14,7 +16,7 @@ namespace Application.User
 {
     public class Login
     {
-        public class Query : IRequest<ApplicationUser>
+        public class Query : IRequest<UserDto>
         {
             public string Email { get; set; }
             public string Password { get; set; }
@@ -29,18 +31,20 @@ namespace Application.User
             }
         }
 
-        public class Handler : IRequestHandler<Query, ApplicationUser>
+        public class Handler : IRequestHandler<Query, UserDto>
         {
             private readonly UserManager<ApplicationUser> _userManager;
             private readonly SignInManager<ApplicationUser> _signInManager;
+            private readonly IMapper _mapper;
 
-            public Handler(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+            public Handler(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IMapper mapper)
             {
                 _userManager = userManager;
                 _signInManager = signInManager;
+                _mapper = mapper;
             }
 
-            public async Task<ApplicationUser> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<UserDto> Handle(Query request, CancellationToken cancellationToken)
             {
                 var user = await _userManager.FindByEmailAsync(request.Email);
 
@@ -51,9 +55,11 @@ namespace Application.User
 
                 var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
+                var userDto = _mapper.Map<UserDto>(user);
+
                 if(result.Succeeded)
                 {
-                    return user;
+                    return userDto;
                 }
 
                 throw new UnauthorizedException(UnauthorizedException.Reason.WrongPassword);

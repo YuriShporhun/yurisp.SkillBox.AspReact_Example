@@ -1,5 +1,7 @@
-﻿using AutoMapper;
+﻿using Application.User.Dto;
+using AutoMapper;
 using Domain;
+using Infrastructure.Identity;
 
 namespace Application.Core
 {
@@ -8,6 +10,7 @@ namespace Application.Core
         public MappingProfiles()
         {
             CreateMap<Trip, Trip>();
+            CreateMap<ApplicationUser, UserDto>();
         }
     }
 }

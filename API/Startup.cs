@@ -15,6 +15,8 @@ using Application.Persistence.Interfaces;
 using FluentValidation.AspNetCore;
 using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
+using Application.Jwt.Interfaces;
+using Infrastructure.Security;
 
 namespace API
 {
@@ -63,6 +65,7 @@ namespace API
 
             services.Configure<CloudinaryApiSettings>(Configuration.GetSection("Cloudinary"));
             services.AddAuthentication();
+            services.AddScoped<IJwtService, JwtService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
