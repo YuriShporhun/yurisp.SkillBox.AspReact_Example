@@ -5,9 +5,81 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WinClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Height="750" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="{x:Null}"
+        AllowsTransparency="True"
+        xmlns:viewmodels="clr-namespace:WinClient.ViewModels"
+        xmlns:views="clr-namespace:WinClient.Views"
+        >
     <Grid>
-        <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
-        <Grid.RowDefinitions></Grid.RowDefinitions>
+        <md:Card UniformCornerRadius="15" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+                <Grid Grid.Column="0">
+                    <ListView HorizontalAlignment="Center">
+                        <ListViewItem>
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="150">
+                                <StackPanel Orientation="Horizontal">
+                                    <md:PackIcon Kind="User" Margin="2 2 5 0"></md:PackIcon>
+                                    <TextBlock>Sign In</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="150">
+                                <StackPanel Orientation="Horizontal">
+                                    <md:PackIcon Kind="PalmTree" Margin="2 2 5 0"></md:PackIcon>
+                                    <TextBlock>Trips</TextBlock>
+                                </StackPanel> 
+                            </Button>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="150">
+                                <StackPanel Orientation="Horizontal">
+                                    <md:PackIcon Kind="Company" Margin="2 2 5 0"></md:PackIcon>
+                                    <TextBlock>Airlanes</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="150">
+                                <StackPanel Orientation="Horizontal">
+                                    <md:PackIcon Kind="Plane" Margin="2 2 5 0"></md:PackIcon>
+                                    <TextBlock>Planes</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <Button Style="{StaticResource MaterialDesignRaisedButton}" Width="150">
+                                <StackPanel Orientation="Horizontal">
+                                    <md:PackIcon Kind="Settings" Margin="2 2 5 0"></md:PackIcon>
+                                    <TextBlock>Settings</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </ListViewItem>
+                    </ListView>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <ContentControl>
+                        <ContentControl.Resources>
+                            <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
+                                <views:HomeView/>
+                            </DataTemplate>
+                            <DataTemplate DataType="{x:Type viewmodels:TripsListViewModel}">
+                                <views:HomeView/>
+                            </DataTemplate>
+                        </ContentControl.Resources>
+                    </ContentControl>
+                </Grid>
+            </Grid>
+        </md:Card>
     </Grid>
 </Window>

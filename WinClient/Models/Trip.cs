@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinClient.ModelWrappers
+namespace WinClient.NTier.Models
 {
-    internal class Trip
+    public class Trip
     {
-        private readonly TripDto model;
+        public readonly TripDto model;
 
         public Trip(TripDto tripDto)
         {
-            model = tripDto;
+            model = tripDto ?? throw new ArgumentNullException(nameof(tripDto));
         }
 
-        public string From 
+        public string LeavingFrom 
         { 
             get
             {
@@ -28,6 +28,16 @@ namespace WinClient.ModelWrappers
             }
         }
 
-        public string To { get; set; }
+        public string GoingTo 
+        { 
+            get
+            {
+                return model.To;
+            }
+            set
+            {
+                model.To = value;
+            }
+        }
     }
 }
