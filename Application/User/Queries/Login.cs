@@ -60,7 +60,7 @@ namespace Application.User
                 var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
                 var userDto = _mapper.Map<UserDto>(user);
-                userDto.Token = _jwtService.Create(user);
+                userDto.Token = _jwtService.CreateToken(user);
 
                 if(result.Succeeded)
                 {

@@ -1,42 +1,49 @@
-﻿using Domain.Common;
-using Entities.Domain;
+﻿using Domain;
+using Domain.Common;
 using System;
 using System.Collections.Generic;
 
-namespace Domain
+namespace Entities.Domain
 {
     /// <summary>
     /// Информация о билете на самолет
     /// </summary>
     public class Trip: IEntity
     {
+
+        /// <summary>
+        /// Идентификатор
+        /// </summary>
         public Guid Id { get; set; }
 
         /// <summary>
         /// Пункт отправления
         /// </summary>
-        public Destination LeavingFrom { get; set; }
+        public Destination LeavingFrom { get; init; }
 
         /// <summary>
         /// Пункт назначения
         /// </summary>
-        public string GoingTo { get; set; }
+        public Destination GoingTo { get; init; }
 
         /// <summary>
         /// Дата вылета
         /// </summary>
-        public DateTime DepartingDate { get;set;  }
+        public DateTime DepartingDate { get;init;  }
 
         /// <summary>
         /// Дата возврата
         /// </summary>
-        public DateTime ReturningDate { get; set; }
+        public DateTime ReturningDate { get; init; }
 
         /// <summary>
         /// Изображения 
         /// </summary>
-        public ICollection<DestinationImage> Images { get; set; }
+        public ICollection<DestinationImage> Images { get; init; }
 
-        public Currency Price { get; set; }
+        /// <summary>
+        /// Стоимость поездки
+        /// </summary>
+        public Price Price { get; init; }
     }
 }

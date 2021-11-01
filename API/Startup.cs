@@ -17,6 +17,9 @@ using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Application.Jwt.Interfaces;
 using Infrastructure.Security;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace API
 {
@@ -64,7 +67,20 @@ namespace API
             identityBuilder.AddSignInManager<SignInManager<ApplicationUser>>(); 
 
             services.Configure<CloudinaryApiSettings>(Configuration.GetSection("Cloudinary"));
-            services.AddAuthentication();
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(""));
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey =  key,
+                        ValidateAudience = false,
+                        ValidateIssuer = false
+                    };
+                });
             services.AddScoped<IJwtService, JwtService>();
         }
 

@@ -1,6 +1,7 @@
 ﻿using Application.Persistence.Interfaces;
 using Application.Trips.Validators;
 using Domain;
+using Entities.Domain;
 using FluentValidation;
 using MediatR;
 using System.Threading;

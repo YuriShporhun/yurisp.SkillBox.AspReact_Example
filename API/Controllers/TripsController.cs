@@ -1,6 +1,6 @@
 ﻿using Application;
 using Application.Tickets;
-using Domain;
+using Entities.Domain;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -29,10 +29,10 @@ namespace API.Controllers
         }
 
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> EditTicket(Guid id, Trip ticket)
+        public async Task<IActionResult> EditTicket(Guid id, Trip trip)
         {
-            ticket.Id = id;
-            return Ok(await Mediator.Send(new EditTicketTrip.Command { Ticket = ticket }));
+            trip.Id = id;
+            return Ok(await Mediator.Send(new EditTrip.Command { Trip = trip }));
         }
 
     }

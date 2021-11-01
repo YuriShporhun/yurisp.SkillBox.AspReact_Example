@@ -1,6 +1,6 @@
 ﻿using Application.User.Dto;
 using AutoMapper;
-using Domain;
+using Entities.Domain;
 using Infrastructure.Identity;
 
 namespace Application.Core

@@ -7,10 +7,10 @@ namespace Entities
 {
     internal class Airline : IEntity
     {
-        public int Id { get; set; }
+        public int Id { get; init; }
 
-        public AirlineName Name { get; set; }
+        public AirlineName Name { get; init; }
 
-        public ICollection<Destination> AvailableDestionations { get; set; }
+        public ICollection<Destination> AvailableDestionations { get; init; }
     }
 }

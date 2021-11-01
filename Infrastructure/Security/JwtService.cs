@@ -11,7 +11,7 @@ namespace Infrastructure.Security
 {
     public class JwtService : IJwtService
     {
-        public string Create(ApplicationUser applicationUser)
+        public string CreateToken(ApplicationUser applicationUser)
         {
             var claims = new List<Claim>
             {

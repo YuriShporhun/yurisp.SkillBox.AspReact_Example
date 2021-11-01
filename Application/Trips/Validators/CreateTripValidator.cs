@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Entities.Domain;
 using FluentValidation;
 
 namespace Application.Trips.Validators

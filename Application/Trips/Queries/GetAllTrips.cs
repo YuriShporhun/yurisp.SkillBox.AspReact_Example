@@ -1,5 +1,6 @@
 ﻿using Application.Persistence.Interfaces;
 using Domain;
+using Entities.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

@@ -1,17 +1,17 @@
 ﻿using Application.Persistence.Interfaces;
 using AutoMapper;
-using Domain;
+using Entities.Domain;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.Tickets
 {
-    public class EditTicketTrip
+    public class EditTrip
     {
         public class Command : IRequest
         {
-            public Domain.Trip Ticket { get; set; }
+            public Trip Trip { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
@@ -27,9 +27,9 @@ namespace Application.Tickets
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var ticket = await _dataAccess.Tickets.FindAsync(request.Ticket.Id);
+                var ticket = await _dataAccess.Tickets.FindAsync(request.Trip.Id);
 
-                _mapper.Map(request.Ticket, ticket);
+                _mapper.Map(request.Trip, ticket);
  
                 _ = await _dataAccess.SaveAsync(cancellationToken);
 

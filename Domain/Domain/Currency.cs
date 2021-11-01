@@ -8,7 +8,14 @@ namespace Entities.Domain
 {
     public class Currency
     {
+        /// <summary>
+        /// Идентификатор валюты
+        /// </summary>
         public int Id { get; set; }
-        public string Name { get; set; }
+
+        /// <summary>
+        /// Код валюты
+        /// </summary>
+        public string Code { get; set; }
     }
 }
