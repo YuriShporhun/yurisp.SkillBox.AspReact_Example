@@ -6,12 +6,19 @@
              xmlns:local="clr-namespace:WinClient.Views"
              mc:Ignorable="d" 
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="White">
     <Grid>
         <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
         <Grid.RowDefinitions></Grid.RowDefinitions>
-        <TextBox Width="100" Height="100" Style="{StaticResource MaterialDesignComboBoxEditableTextBox}">
-            
-        </TextBox>
+        <md:Card Width="500" Height="300" BorderThickness="2">
+            <StackPanel>
+                <TextBlock Text="Email" Width="150" Style="{StaticResource MaterialDesignBody1TextBlock}"></TextBlock>
+                <TextBox Text="{Binding Email}" Width="150" Height="30" Style="{StaticResource MaterialDesignFilledTextBox}"></TextBox>
+                <TextBlock Text="Password" Width="150" Style="{StaticResource MaterialDesignBody1TextBlock}"/>
+                <TextBox Text="{Binding Password}" Width="150" Height="30" Style="{StaticResource MaterialDesignFilledTextBox}"></TextBox>
+                <Button Margin="0 15 0 0" Width="150">Login</Button>
+            </StackPanel>
+        </md:Card>
     </Grid>
 </UserControl>
