@@ -9,6 +9,6 @@ namespace WinClient.ViewModels
 {
     public class HomeViewModel : Bindable
     {
-
+        
     }
 }

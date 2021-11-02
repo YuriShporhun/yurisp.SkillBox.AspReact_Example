@@ -17,7 +17,7 @@ namespace WinClient.NTier.Common
             dto = Dto;
         }
 
-        protected void SetValue<TValue>(TValue value, [CallerMemberName] string propertyName=null)
+        protected void SetValue<TValue>(TValue value, [CallerMemberName] string propertyName = null)
         {
             var propertyInfo = dto.GetType().GetProperty(propertyName);
             var propertyValue = propertyInfo.GetValue(dto, null);
@@ -26,6 +26,13 @@ namespace WinClient.NTier.Common
                 propertyInfo.SetValue(dto, value, null);
                 RaisePropertyChanged(propertyName);
             }
+        }
+
+        protected TValue GetValue<TValue>([CallerMemberName] string propertyName = null)
+        {
+            var propertyInfo = dto.GetType().GetProperty(propertyName);
+            var propertyValue = propertyInfo?.GetValue(dto, null);
+            return (TValue)propertyValue;
         }
     }
 }

@@ -1,10 +1,4 @@
 ﻿using Application.User.Dto;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WinClient.Common;
 using WinClient.NTier.Common;
 
 namespace WinClient.NTier.Models
@@ -18,14 +12,8 @@ namespace WinClient.NTier.Models
 
         public string DisplayName 
         { 
-            get
-            {
-                return dto.DisplayName;
-            }
-            set
-            {
-                SetValue(dto.DisplayName, value);
-            }
+            get => GetValue<string>();  
+            set => SetValue(dto.DisplayName, value);
         }
     }
 }
