@@ -1,30 +1,22 @@
 ﻿using Application.Tickets.DTO;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using WinClient.Common;
+using WinClient.NTier.Common;
 
 namespace WinClient.NTier.Models
 {
-    public class Trip
+    public class Trip : DtoWrapper<TripDto>
     {
-        public readonly TripDto model;
-
-        public Trip(TripDto tripDto)
-        {
-            model = tripDto ?? throw new ArgumentNullException(nameof(tripDto));
+        public Trip(TripDto tripDto) : base(tripDto)
+        {  
+        
         }
 
         public string LeavingFrom 
         { 
             get
             {
-                return model.From;
-            }
-            set
-            {
-                model.From = value;
+                return dto.From;
             }
         }
 
@@ -32,11 +24,7 @@ namespace WinClient.NTier.Models
         { 
             get
             {
-                return model.To;
-            }
-            set
-            {
-                model.To = value;
+                return dto.To;
             }
         }
     }

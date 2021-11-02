@@ -7,6 +7,11 @@ namespace WinClient
     /// </summary>
     public partial class App : WinApp
     {
-
+        protected override void OnStartup(System.Windows.StartupEventArgs e)
+        {
+            MainWindow = new MainWindow();
+            MainWindow.Show();
+            base.OnStartup(e);
+        }
     }
 }

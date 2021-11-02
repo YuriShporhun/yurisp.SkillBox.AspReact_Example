@@ -24,7 +24,7 @@ namespace WinClient.NTier.Tests
         }
 
         [Test]
-        public void Ctor_DtoIsNull_ShouldFail()
+        public void Ctor_DtoIsNull_ShouldThrowException()
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
