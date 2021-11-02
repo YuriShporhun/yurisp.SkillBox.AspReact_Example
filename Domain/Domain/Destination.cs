@@ -1,10 +1,9 @@
-﻿using Domain.Common;
+﻿using CSharpFunctionalExtensions;
 
 namespace Entities.Domain
 {
-    public class Destination : IEntity
+    public class Destination : Entity<int>
     {
-        public int Id { get; init; }
         public string City { get; init; }
         public string Country { get; init; }
 

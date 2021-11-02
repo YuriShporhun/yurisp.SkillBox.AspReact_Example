@@ -1,16 +1,12 @@
-﻿using Domain.Common;
+﻿using CSharpFunctionalExtensions;
 
 namespace Domain
 {
     /// <summary>
     /// Картинка места прибытия
     /// </summary>
-    public class DestinationImage: IEntity
+    public class DestinationImage: Entity<int>
     {
-        /// <summary>
-        /// Идентификатор
-        /// </summary>
-        public string Id { get; init; }
 
         /// <summary>
         /// Адрес картинки

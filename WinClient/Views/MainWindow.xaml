@@ -68,13 +68,13 @@
                     </ListView>
                 </Grid>
                 <Grid Grid.Column="1">
-                    <ContentControl>
+                    <ContentControl Content="{Binding CurrentViewModel}">
                         <ContentControl.Resources>
                             <DataTemplate DataType="{x:Type viewmodels:HomeViewModel}">
                                 <views:HomeView/>
                             </DataTemplate>
                             <DataTemplate DataType="{x:Type viewmodels:TripsListViewModel}">
-                                <views:HomeView/>
+                                <views:TripsListView/>
                             </DataTemplate>
                         </ContentControl.Resources>
                     </ContentControl>

@@ -1,10 +1,10 @@
-﻿using Entities.ValueObjects;
+﻿using CSharpFunctionalExtensions;
+using Entities.ValueObjects;
 
 namespace Entities.Domain
 {
-    public class Price
+    public class Price : Entity<int>
     {
-        public int Id { get; init; }
         public Currency Currency { get; init; }
         public PriceValue Value { get; set; }
     }

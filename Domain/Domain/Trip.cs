@@ -1,5 +1,5 @@
-﻿using Domain;
-using Domain.Common;
+﻿using CSharpFunctionalExtensions;
+using Domain;
 using System;
 using System.Collections.Generic;
 
@@ -8,14 +8,8 @@ namespace Entities.Domain
     /// <summary>
     /// Информация о билете на самолет
     /// </summary>
-    public class Trip: IEntity
+    public class Trip: Entity<Guid>
     {
-
-        /// <summary>
-        /// Идентификатор
-        /// </summary>
-        public Guid Id { get; set; }
-
         /// <summary>
         /// Пункт отправления
         /// </summary>

@@ -1,12 +1,9 @@
-﻿using System;
+﻿using CSharpFunctionalExtensions;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entities.ValueObjects
 {
-    public class AirlineName : ValueObject<AirlineName>
+    public class AirlineName : ValueObject
     {
         public string Value { get; init; }
 
@@ -17,15 +14,10 @@ namespace Entities.ValueObjects
             Value = value;
         }
 
-        protected override bool EqualsBase(AirlineName valueObject)
+        protected override IEnumerable<object> GetEqualityComponents()
         {
-            return Value.Equals(valueObject.Value, StringComparison.InvariantCultureIgnoreCase) &&
-                   Country.Equals(valueObject.Country, StringComparison.InvariantCultureIgnoreCase);
-        }
-
-        protected override int GetHashCodeBase()
-        {
-            return Value.GetHashCode() ^ Country.GetHashCode();
+            yield return Value;
+            yield return Country;
         }
     }
 }

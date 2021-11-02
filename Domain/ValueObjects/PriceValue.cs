@@ -1,13 +1,9 @@
 ﻿using CSharpFunctionalExtensions;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entities.ValueObjects
 {
-    public class PriceValue : ValueObject<PriceValue>
+    public class PriceValue : ValueObject
     {
         private readonly decimal _value;
 
@@ -25,14 +21,9 @@ namespace Entities.ValueObjects
             return Result.Success(new PriceValue(value));
         }
 
-        protected override bool EqualsBase(PriceValue valueObject)
+        protected override IEnumerable<object> GetEqualityComponents()
         {
-           return _value.Equals(valueObject._value);
-        }
-
-        protected override int GetHashCodeBase()
-        {
-            return GetHashCode();
+            yield return _value;
         }
     }
 }

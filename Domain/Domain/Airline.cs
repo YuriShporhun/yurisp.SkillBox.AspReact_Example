@@ -1,14 +1,12 @@
-﻿using Domain.Common;
+﻿using CSharpFunctionalExtensions;
 using Entities.Domain;
 using Entities.ValueObjects;
 using System.Collections.Generic;
 
 namespace Entities
 {
-    internal class Airline : IEntity
+    internal class Airline : Entity<int>
     {
-        public int Id { get; init; }
-
         public AirlineName Name { get; init; }
 
         public ICollection<Destination> AvailableDestionations { get; init; }

@@ -9,6 +9,6 @@ namespace WinClient.ViewModels
 {
     internal class MainWindowViewModel
     {
-        Bindable CurrentViewModel { get; set; } = new  HomeViewModel();
+        public Bindable CurrentViewModel { get; set; } = new  HomeViewModel();
     }
 }

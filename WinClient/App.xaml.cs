@@ -1,4 +1,5 @@
-﻿using WinApp = System.Windows.Application;
+﻿using WinClient.ViewModels;
+using WinApp = System.Windows.Application;
 
 namespace WinClient
 {
@@ -10,6 +11,7 @@ namespace WinClient
         protected override void OnStartup(System.Windows.StartupEventArgs e)
         {
             MainWindow = new MainWindow();
+            MainWindow.DataContext = new MainWindowViewModel();
             MainWindow.Show();
             base.OnStartup(e);
         }
