@@ -4,7 +4,7 @@ using WinClient.Common;
 
 namespace WinClient.NTier.Common
 {
-    public class DtoWrapper<TDto> : Bindable
+    public class DtoWrapper<TDto> : NotifyErrorInfo
     {
         protected TDto dto;
 
