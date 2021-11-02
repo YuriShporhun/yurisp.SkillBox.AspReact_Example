@@ -36,14 +36,14 @@ namespace WinClient.NTier.Tests
         public void GetGoingTo_DtoIsCorrect_ShouldPass()
         {
             Trip trip = new (correctTripDto);
-            Assert.AreEqual(trip.GoingTo, correctTripDto.To);
+            Assert.AreEqual(trip.To, correctTripDto.To);
         }
 
         [Test]
         public void GetLeavingFrom_DtoIsCorrect_ShoundPass()
         {
             Trip trip = new(correctTripDto);
-            Assert.AreEqual(trip.LeavingFrom, correctTripDto.From);
+            Assert.AreEqual(trip.From, correctTripDto.From);
         }
     }
 }

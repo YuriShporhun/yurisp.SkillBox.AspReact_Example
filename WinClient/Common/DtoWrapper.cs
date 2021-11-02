@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Runtime.CompilerServices;
-using WinClient.Common;
 
 namespace WinClient.NTier.Common
 {
@@ -24,7 +26,31 @@ namespace WinClient.NTier.Common
             if (!Equals(propertyValue, value))
             {
                 propertyInfo.SetValue(dto, value, null);
+                VadidateProperty(propertyName, propertyValue);
                 RaisePropertyChanged(propertyName);
+            }
+        }
+
+        private void VadidateProperty(string propertyName, object propertyValue)
+        {
+            var validationResults = new List<ValidationResult>();
+            var context = new ValidationContext(this)
+            {
+                MemberName = propertyName,
+            };
+            Validator.TryValidateProperty(propertyValue, context, validationResults);
+            if(validationResults.Any())
+            {
+                Errors[propertyName] = validationResults.Select(x => x.ErrorMessage).Distinct().ToList();
+                RaiseErrorChanged(propertyName);
+            }
+            else
+            {
+                if(Errors.ContainsKey(propertyName))
+                {
+                    Errors.Remove(propertyName);
+                    RaiseErrorChanged(propertyName);
+                }
             }
         }
 

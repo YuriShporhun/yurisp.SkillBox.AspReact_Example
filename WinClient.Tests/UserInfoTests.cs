@@ -1,6 +1,7 @@
 ﻿using Application.User.Dto;
 using NUnit.Framework;
 using System;
+using System.Linq;
 using WinClient.NTier.Models;
 
 namespace WinClient.NTier.Tests
@@ -49,6 +50,38 @@ namespace WinClient.NTier.Tests
         {
             var userInfo = new UserInfo(_correctUserDto);
             Assert.AreEqual(userInfo.DisplayName, _correctUserDto.DisplayName);
+            Assert.IsFalse(userInfo.HasErrors);
+        }
+
+        [Test]
+        public void SetDisplayName_EmptyStringPassed_ShouldNotifyError()
+        {
+            var userInfo = new UserInfo(_correctUserDto)
+            {
+                DisplayName = string.Empty
+            };
+            var errors = userInfo.GetErrors(nameof(userInfo.DisplayName)).Cast<string>();
+
+            Assert.AreEqual(1, errors.Count());
+            Assert.IsTrue(userInfo.HasErrors);
+        }
+
+        [Test]
+        public void SetDisplayName_EmptyStringPassed_ShouldRaiseErrorsChanged()
+        {
+            var userInfo = new UserInfo(_correctUserDto);
+            var raised = false;
+            userInfo.ErrorsChanged += (sender, args) =>
+            {
+                if (args.PropertyName == nameof(userInfo.DisplayName))
+                {
+                    raised = true;
+                }
+            };
+
+            userInfo.DisplayName = string.Empty;
+
+            Assert.IsTrue(raised);
         }
     }
 }

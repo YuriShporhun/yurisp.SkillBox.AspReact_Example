@@ -13,7 +13,7 @@ namespace WinClient.NTier.Models
         public string DisplayName 
         { 
             get => GetValue<string>();  
-            set => SetValue(dto.DisplayName, value);
+            set => SetValue(value);
         }
     }
 }

@@ -6,6 +6,6 @@ namespace Entities.Domain
     {
         public int Id { get; init; }
         public Currency Currency { get; init; }
-        public Money Value { get; set; }
+        public PriceValue Value { get; set; }
     }
 }

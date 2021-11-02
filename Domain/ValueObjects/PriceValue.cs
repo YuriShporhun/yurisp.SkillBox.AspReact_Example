@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 
 namespace Entities.ValueObjects
 {
-    public class Money : ValueObject<Money>
+    public class PriceValue : ValueObject<PriceValue>
     {
         private readonly decimal _value;
 
-        private Money(decimal value) 
+        private PriceValue(decimal value) 
         {
             _value = value;
         }
 
-        public static Result<Money> Create(decimal value)
+        public static Result<PriceValue> Create(decimal value)
         {
             if(value < 0)
             {
-                return Result.Failure<Money>("Цена должна быть больше или равной нулю");
+                return Result.Failure<PriceValue>("Цена должна быть больше или равной нулю");
             }
-            return Result.Success(new Money(value));
+            return Result.Success(new PriceValue(value));
         }
 
-        protected override bool EqualsBase(Money valueObject)
+        protected override bool EqualsBase(PriceValue valueObject)
         {
            return _value.Equals(valueObject._value);
         }

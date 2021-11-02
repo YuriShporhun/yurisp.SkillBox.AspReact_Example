@@ -1,5 +1,6 @@
 ﻿using Application.Tickets.DTO;
 using System;
+using System.ComponentModel.DataAnnotations;
 using WinClient.Common;
 using WinClient.NTier.Common;
 
@@ -12,20 +13,16 @@ namespace WinClient.NTier.Models
         
         }
 
-        public string LeavingFrom 
-        { 
-            get
-            {
-                return dto.From;
-            }
+        [Required]
+        public string From 
+        {
+            get => GetValue<string>();
         }
 
-        public string GoingTo 
-        { 
-            get
-            {
-                return dto.To;
-            }
+        [Required]
+        public string To 
+        {
+            get => GetValue<string>();
         }
     }
 }
