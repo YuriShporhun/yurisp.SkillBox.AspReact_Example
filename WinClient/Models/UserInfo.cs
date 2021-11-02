@@ -24,8 +24,7 @@ namespace WinClient.NTier.Models
             }
             set
             {
-                dto.DisplayName = value;
-                RaisePropertyChanged();
+                SetValue(dto.DisplayName, value);
             }
         }
     }
