@@ -31,7 +31,10 @@ namespace API.Controllers
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> EditTicket(Guid id, Trip trip)
         {
-            trip.Id = id;
+            if(id != trip.Id)
+            {
+                return BadRequest("Идентификаторы путевок не совпадают");
+            }
             return Ok(await Mediator.Send(new EditTrip.Command { Trip = trip }));
         }
 

@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WinClient\WinClient.NTier.csproj" />
+    <ProjectReference Include="..\WinClient\AdminPanel.csproj" />
   </ItemGroup>
 
 </Project>
